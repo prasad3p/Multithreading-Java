@@ -41,7 +41,7 @@ public class Exe1 {
 		ExecutorService threadPool = Executors.newFixedThreadPool(Integer.parseInt(input));
 		
 		 // submit jobs to be executing by the pool
-		for (int i = 0; i < Integer.parseInt(input2); i++) {
+		for (int i = 0; i < Integer.parseInt(input2)*Integer.parseInt(input); i++) {
 		    threadPool.submit(new Runnable() {
 		         public void run() {		        	 
 		        	 Counter.inc();
@@ -63,7 +63,7 @@ public class Exe1 {
 	}
 	static class Counter{
 	    static int count;
-	    static void inc() {
+	    static synchronized void inc() {
 	        count = count+1;
 	    }
 	    int getCount() {

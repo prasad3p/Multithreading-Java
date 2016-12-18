@@ -1,0 +1,16 @@
+package p1;
+
+public class Exe2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		double maxCount=0;
+		double tempCount=0
+		
+		for(int i=10000;i>=1;i--){
+			
+		}
+
+	}
+
+}
