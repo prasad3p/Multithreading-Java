@@ -1,0 +1,25 @@
+package p1;
+
+import java.util.Scanner;
+
+class Counter{
+    int count;
+    void inc() {
+        count = count+1;
+    }
+    int getCount() {
+        return count;
+    }
+}
+
+public class Exe1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner s = new Scanner();
+		
+
+	}
+
+}

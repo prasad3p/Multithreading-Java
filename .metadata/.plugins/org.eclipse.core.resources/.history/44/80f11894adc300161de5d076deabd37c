@@ -1,0 +1,24 @@
+package demo6;
+
+import java.util.concurrent.CountDownLatch;
+
+class Processor implements Runnable{
+	
+	private CountDownLatch latch;
+	
+	public Processor(CountDownLatch latch){
+		this.latch=latch;
+	}
+	public void run(){
+		
+	}
+}
+
+public class Latch1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

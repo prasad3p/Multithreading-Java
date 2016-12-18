@@ -1,0 +1,16 @@
+package demo6;
+
+class Processor implements Runnable{
+	public void run(){
+		
+	}
+}
+
+public class Latch1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
