@@ -5,21 +5,28 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 
+
 public class Exe2_1 {
 
 	private static int num;
-	private static int tempCount;
 	private static int maxCount;
+	private static int count;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		ExecutorService threadPool = Executors.newWorkStealingPool();
 		
-		for(int i=0;i<100000;i++){
-			
-			threadPool.submit(findMaxDiv(i));
-			
+		for(int i=0;i<10000;i++){
+			count=i;
+			threadPool.submit(new Runnable() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					findMaxDiv(count);
+					
+				}
+			});
 		}
 		
 		threadPool.shutdown();
@@ -30,17 +37,27 @@ public class Exe2_1 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println("Max div number:"+num);
+		System.out.println("Div count is:"+maxCount);
+		
 	}
-
-	private static Runnable findMaxDiv(int i) {
-		// TODO Auto-generated method stub
-		for(int j=1; j<=i; j++){
-			if((i%j)==0) tempCount++;
+	public static void findMaxDiv(int threadCount){
+		
+			// TODO Auto-generated method stub
+		Object lock = new Object();
+		int tempCount=0;
+		for(int j=1; j<=threadCount; j++){
+			if((threadCount%j)==0) tempCount++;
 		}
-		if(tempCount>maxCount)tempCount=maxCount;
+		synchronized (lock) {
+			if(tempCount>maxCount){
+				tempCount=maxCount;
+				num=threadCount;
+			}	
+		}
 		
 		
-		return null;
 	}
 
 	

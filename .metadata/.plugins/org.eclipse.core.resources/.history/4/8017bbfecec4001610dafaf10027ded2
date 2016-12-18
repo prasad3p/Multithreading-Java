@@ -1,0 +1,59 @@
+package p1;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+public class findMaxDiv extends Thread{
+	
+	private int threadCount;
+	public findMaxDiv (int i){
+		threadCount=i;
+	}
+	
+	public void run() {
+		// TODO Auto-generated method stub
+		int tempCount=0;
+		for(int j=1; j<=i; j++){
+			if((i%j)==0) tempCount++;
+		}
+		if(tempCount>maxCount){
+			tempCount=maxCount;
+			num=i;
+		}	
+	}
+}
+
+public class Exe2_1 {
+
+	private static int num;
+	private static int maxCount;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ExecutorService threadPool = Executors.newWorkStealingPool();
+		
+		for(int i=0;i<10000;i++){
+			
+			threadPool.submit(new findMaxDiv(i));
+		}
+		
+		threadPool.shutdown();
+		
+		try {
+			threadPool.awaitTermination(1,TimeUnit.DAYS);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("Max div number:"+num);
+		System.out.println("Div count is:"+maxCount);
+		
+	}
+
+
+	
+
+}
