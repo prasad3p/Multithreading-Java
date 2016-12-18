@@ -12,7 +12,7 @@ static class Counter {
 Write a thread class that will call the inc() method in this class a specified number of times. Create several threads, start them all, and wait for all the threads to terminate. Print the final value of the counter, and see whether it is correct.
 
 Let the user enter the number of threads and the number of times that each thread will increment the counter. You might need a fairly large number of increments to see an error. And of course there can never be any error if you use just one thread. Your program can use join() to wait for a thread to terminate
-
+EXE 1
 */
 
 
